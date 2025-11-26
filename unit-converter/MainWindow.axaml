@@ -1,0 +1,49 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="300"
+        Width="500" Height="300"
+        x:Class="unit_converter.MainWindow"
+        Title="unit_converter">
+        
+        <Grid
+                Margin="40 20"
+                RowSpacing="30"
+                ColumnSpacing="20"
+                >
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.ColumnSpan="2" Text="Unit Converter" FontSize="26" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                
+                <TextBox Grid.Column="0" Grid.Row="1" Watermark="From"/>
+                <ComboBox Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch">
+                        <ComboBoxItem>cm</ComboBoxItem>
+                        <ComboBoxItem>m</ComboBoxItem>
+                        <ComboBoxItem>km</ComboBoxItem>
+                        <ComboBoxItem>mi</ComboBoxItem>
+                </ComboBox>
+                
+                <ComboBox Grid.Column="0" Grid.Row="2" SelectedIndex="0" HorizontalAlignment="Stretch">
+                        <ComboBoxItem>cm</ComboBoxItem>
+                        <ComboBoxItem>m</ComboBoxItem>
+                        <ComboBoxItem>km</ComboBoxItem>
+                        <ComboBoxItem>mi</ComboBoxItem>
+                </ComboBox>
+                <!-- <TextBox Grid.Column="1" Grid.Row="2" Watermark="To" IsReadOnly="True" /> -->
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="To..." VerticalAlignment="Center"/>
+                
+                
+                <Button Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
+                <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Classes="Success">Convert</Button>
+        </Grid>
+</Window>
