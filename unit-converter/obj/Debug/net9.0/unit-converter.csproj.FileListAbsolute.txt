@@ -72,3 +72,4 @@ C:\Users\forgi\Coding\unit-converter\unit-converter\obj\Debug\net9.0\unit-conver
 C:\Users\forgi\Coding\unit-converter\unit-converter\obj\Debug\net9.0\unit-converter.genruntimeconfig.cache
 C:\Users\forgi\Coding\unit-converter\unit-converter\obj\Debug\net9.0\ref\unit-converter.dll
 C:\Users\forgi\Coding\unit-converter\unit-converter\bin\Debug\net9.0\Semi.Avalonia.dll
+C:\Users\forgi\Coding\unit-converter\unit-converter\obj\Debug\net9.0\unit-converter.sourcelink.json

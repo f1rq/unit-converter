@@ -25,7 +25,7 @@
                 
                 <TextBlock Grid.ColumnSpan="2" Text="Unit Converter" FontSize="26" FontWeight="SemiBold" HorizontalAlignment="Center"/>
                 
-                <TextBox Grid.Column="0" Grid.Row="1" Watermark="From"/>
+                <TextBox x:Name="FromValue" Grid.Column="0" Grid.Row="1" Watermark="From"/>
                 <ComboBox Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch">
                         <ComboBoxItem>cm</ComboBoxItem>
                         <ComboBoxItem>m</ComboBoxItem>
@@ -40,10 +40,10 @@
                         <ComboBoxItem>mi</ComboBoxItem>
                 </ComboBox>
                 <!-- <TextBox Grid.Column="1" Grid.Row="2" Watermark="To" IsReadOnly="True" /> -->
-                <TextBlock Grid.Column="1" Grid.Row="2" Text="To..." VerticalAlignment="Center"/>
+                <TextBlock x:Name="ResultValue" Grid.Column="1" Grid.Row="2" Text="To..." VerticalAlignment="Center"/>
                 
                 
-                <Button Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
-                <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Classes="Success">Convert</Button>
+                <Button x:Name="ResetButton" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
+                <Button x:Name="ConvertButton" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" Classes="Success">Convert</Button>
         </Grid>
 </Window>
