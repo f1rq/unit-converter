@@ -11,6 +11,8 @@ public class UnitConverter
         {
             { "Length", new() { "cm", "m", "km", "mi" } },
             { "Weight", new() { "g", "kg", "lb", "oz" } },
+            { "Area", new() { "m²", "km²", "mi²", "acres", "hectares" } }, // TODO: Implement Area conversion
+            { "Currency", new() { "USD", "EUR", "GBP", "PLN", "JPY" } } // TODO: Implement Currency conversion
         };
     
     public IEnumerable<string> GetCategories()

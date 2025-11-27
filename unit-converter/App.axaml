@@ -2,9 +2,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:semi="https://irihi.tech/semi"
              x:Class="unit_converter.App"
-             RequestedThemeVariant="Dark">
+             RequestedThemeVariant="Light">
 
     <Application.Styles>
-        <semi:SemiTheme/>
+        <FluentTheme></FluentTheme>
+        <!-- <StyleInclude Source="avares://unit_converter/Styles/Dark.axaml"/> -->
+        <StyleInclude Source="Styles/Dark.axaml"/>
     </Application.Styles>
+
 </Application>
