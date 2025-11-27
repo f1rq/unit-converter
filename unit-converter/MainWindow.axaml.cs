@@ -15,6 +15,7 @@ public partial class MainWindow : Window
         ConvertButton.Click += OnConvert;
         ResetButton.Click += OnReset;
         CategoryComboBox.SelectionChanged += OnCategoryChanged;
+        UnitSwapBtn.Click += SwapUnits;
     }
 
     // Reset input and output fields
@@ -69,5 +70,13 @@ public partial class MainWindow : Window
 
         double result = _converter.Convert(category, fromUnit, toUnit, fromValue);
         ResultValue.Text = result.ToString("F2");
+    }
+
+    private void SwapUnits(object? sender, RoutedEventArgs e)
+    {
+        var fromIdx = FromUnitComboBox.SelectedIndex;
+        var toIdx = ToUnitComboBox.SelectedIndex;
+        FromUnitComboBox.SelectedIndex = toIdx;
+        ToUnitComboBox.SelectedIndex = fromIdx;
     }
 }

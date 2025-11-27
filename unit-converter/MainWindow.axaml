@@ -2,9 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="360"
-        Width="500" Height="360"
-        MinWidth="500" MinHeight="360"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+        Width="500" Height="400"
+        MinWidth="500" MinHeight="400"
         x:Class="unit_converter.MainWindow"
         Title="unit_converter">
         
@@ -19,6 +19,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -43,19 +44,20 @@
                         <ComboBoxItem>mi</ComboBoxItem>
                 </ComboBox>
                 
+                <Button x:Name="UnitSwapBtn" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Classes="Tertiary" FontSize="20" Content="↕"/>
                 
-                <Border Grid.Column="0" Grid.Row="3" Background="#2F2F33" Padding="12 0" CornerRadius="4">
+                <Border Grid.Column="0" Grid.Row="4" Background="#2F2F33" Padding="12 0" CornerRadius="4">
                         <TextBlock x:Name="ResultValue" Text="0" FontWeight="SemiBold" VerticalAlignment="Center"/>
                 </Border>
                 
-                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch">
+                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="4" SelectedIndex="0" HorizontalAlignment="Stretch">
                         <ComboBoxItem>cm</ComboBoxItem>
                         <ComboBoxItem>m</ComboBoxItem>
                         <ComboBoxItem>km</ComboBoxItem>
                         <ComboBoxItem>mi</ComboBoxItem>
                 </ComboBox>
 
-                <Button x:Name="ResetButton" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
-                <Button x:Name="ConvertButton" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Classes="Success">Convert</Button>
+                <Button x:Name="ResetButton" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
+                <Button x:Name="ConvertButton" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Classes="Success">Convert</Button>
         </Grid>
 </Window>
