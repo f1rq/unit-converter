@@ -8,7 +8,7 @@
 
     <!-- Add Styles Here -->
     <Styles.Resources>
-        <Color x:Key="BackgroundColor">#343A40</Color>
+        <Color x:Key="BackgroundColor">#212529</Color>
         <Color x:Key="ForegroundColor">#F8F9FA</Color>
         
         <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
@@ -20,4 +20,15 @@
         <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
     </Style>
     
+    <Style Selector="Button">
+        <Setter Property="Background" Value="#DEE2E6"/>
+        <Setter Property="Padding" Value="8,6"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        
+    </Style>
+    
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="#ADB5BD"/>
+    </Style>
 </Styles>
