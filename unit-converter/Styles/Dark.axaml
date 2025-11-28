@@ -2,17 +2,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
-            <Button Content="Hello World"></Button>
+            <!-- <Button Content="Length" Width="100" Height="100" FontSize="16"></Button> -->
+            
+            <TextBox x:Name="FromValue" Grid.Column="0" Grid.Row="1" Watermark="Enter value to convert..."/>
+            <!-- -->
+            <!-- <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch"> -->
+            <!--     <ComboBoxItem>cm</ComboBoxItem> -->
+            <!-- </ComboBox> -->
         </Border>
     </Design.PreviewWith>
 
     <!-- Add Styles Here -->
     <Styles.Resources>
         <Color x:Key="BackgroundColor">#212529</Color>
+        <Color x:Key="SecondaryBackgroundColor">#2D3339</Color>
+        <Color x:Key="FocusLightBackgroundColor">#ced4da</Color>
+        <Color x:Key="HighlightColor">#3B4147</Color>
         <Color x:Key="ForegroundColor">#F8F9FA</Color>
         
+        <Color x:Key="TransparentColor">#00000000</Color>
+        
         <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+        <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="{StaticResource SecondaryBackgroundColor}"/>
+        <SolidColorBrush x:Key="FocusLightBackgroundBrush" Color="{StaticResource FocusLightBackgroundColor}"/>
+        <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}"/>
         <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}"/>
+        
+        <SolidColorBrush x:Key="TransparentBrush" Color="{StaticResource TransparentColor}"/>
     </Styles.Resources>
     
     <Style Selector="Window">
@@ -21,14 +37,17 @@
     </Style>
     
     <Style Selector="Button">
-        <Setter Property="Background" Value="#DEE2E6"/>
-        <Setter Property="Padding" Value="8,6"/>
+        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Padding" Value="12,10"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         
     </Style>
     
-    <Style Selector="Button:pointerover">
-        <Setter Property="Background" Value="#ADB5BD"/>
+    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
     </Style>
 </Styles>
