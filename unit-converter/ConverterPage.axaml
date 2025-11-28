@@ -35,8 +35,12 @@
                 
                 <Button x:Name="UnitSwapBtn" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center" Classes="Tertiary" FontSize="20" Content="↕"/>
                 
-                <Border Grid.Column="0" Grid.Row="3" Background="#2F2F33" Padding="12 0" CornerRadius="4">
-                        <TextBlock x:Name="ResultValue" Text="0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <Border Grid.Column="0" Grid.Row="3" 
+                        Background="{DynamicResource SecondaryBackgroundBrush}" 
+                        Padding="{DynamicResource TextControlThemePadding}" 
+                        CornerRadius="{DynamicResource ControlCornerRadius}"
+                        Height="{DynamicResource TextControlThemeMinHeight}">
+                        <TextBlock x:Name="ResultValue" Text="0" VerticalAlignment="Center"/>
                 </Border>
                 
                 <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch">
