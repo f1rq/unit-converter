@@ -30,7 +30,7 @@ public partial class CategoryPage : UserControl
 
         foreach (var category in _converter.GetCategories())
         {
-            var button = new Button { Content = category, Height = 40 };
+            var button = new Button { Content = category, Height = 100, Width = 100};
             button.Click += (_, __) => _mainWindow?.ShowConverter(category);
 
             if (_mainWindow == null)
