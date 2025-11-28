@@ -1,13 +1,21 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:semi="https://irihi.tech/semi"
              x:Class="unit_converter.App"
-             RequestedThemeVariant="Light">
+             RequestedThemeVariant="Dark">
 
     <Application.Styles>
         <FluentTheme></FluentTheme>
-        <!-- <StyleInclude Source="avares://unit_converter/Styles/Dark.axaml"/> -->
         <StyleInclude Source="Styles/Dark.axaml"/>
     </Application.Styles>
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="/Controls/ComboBox.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="/Controls/TextBox.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="/Controls/ComboBoxItem.axaml"></MergeResourceInclude>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 
 </Application>
