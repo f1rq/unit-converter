@@ -39,6 +39,14 @@ public class UnitConverter
                 { "lb", 0.453592 },
                 { "oz", 0.0283495 }
             },
+            "Area" => new Dictionary<string, double>
+            {
+                { "m²" , 1 },
+                { "km²", 1000000 },
+                { "mi²", 2589988.11 },
+                { "acres", 4046.86 },
+                { "hectares", 10000 }
+            },
             _ => throw new ArgumentException("Unknown category")
         };
         
