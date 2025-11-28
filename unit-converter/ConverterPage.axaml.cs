@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
@@ -86,8 +87,7 @@ public partial class ConverterPage : UserControl
         }
 
         double result = _converter.Convert(_category, fromUnit, toUnit, fromValue);
-        ResultValue.Text = result.ToString("F2");
-    }
+        ResultValue.Text = Math.Abs(result) >= 0.01 ? result.ToString("F2") : result.ToString("G");    }
 
     private void SwapUnits(object? sender, RoutedEventArgs e)
     {
