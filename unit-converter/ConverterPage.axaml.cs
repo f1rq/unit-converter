@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using unit_converter.Units;
 
 namespace unit_converter;
 
@@ -39,6 +41,19 @@ public partial class ConverterPage : UserControl
 
     private void UpdateUnits()
     {
+        if (_category == "Currency")
+        {
+            FromUnitComboBox.IsVisible = false;
+            ToUnitComboBox.IsVisible = false;
+
+            FromCurrencyAutoCompleteBox.IsVisible = true;
+            ToCurrencyAutoCompleteBox.IsVisible = true;
+
+            var currencies = CurrencyRates.GetAvailableCurrencies().ToList();
+            FromCurrencyAutoCompleteBox.ItemsSource = currencies;
+            ToCurrencyAutoCompleteBox.ItemsSource = currencies;
+        }
+        
         var units = _converter.GetUnits(_category);
         FromUnitComboBox.Items.Clear();
         ToUnitComboBox.Items.Clear();
@@ -71,36 +86,71 @@ public partial class ConverterPage : UserControl
     // Perform conversion
     private void OnConvert(object? sender, RoutedEventArgs e)
     {
+        
         if (!double.TryParse(FromValue.Text, out double fromValue))
         {
             ResultValue.Text = "Invalid input";
             return;
         }
-        
-        var fromUnit = (FromUnitComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
-        var toUnit = (ToUnitComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
-        if (fromUnit == null || toUnit == null)
+        string fromUnit;
+        string toUnit;
+
+        if (_category == "Currency")
+        {
+            fromUnit = (FromCurrencyAutoCompleteBox.Text ?? string.Empty).Trim().ToUpperInvariant();
+            toUnit = (ToCurrencyAutoCompleteBox.Text ?? string.Empty).Trim().ToUpperInvariant();
+        }
+        else
+        {
+            fromUnit = (FromUnitComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? string.Empty;
+            toUnit = (ToUnitComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? string.Empty;
+        }
+
+        if (string.IsNullOrWhiteSpace(fromUnit) || string.IsNullOrWhiteSpace(toUnit))
         {
             ResultValue.Text = "Select units";
             return;
         }
 
-        double result = _converter.Convert(_category, fromUnit, toUnit, fromValue);
-        ResultValue.Text = Math.Abs(result) >= 0.01 ? result.ToString("F2") : result.ToString("G");    }
+        if (string.IsNullOrEmpty(fromUnit) || string.IsNullOrEmpty(toUnit))
+        {
+            ResultValue.Text = "Select units";
+            return;
+        }
+
+        try
+        {
+            double result = _converter.Convert(_category, fromUnit, toUnit, fromValue);
+            ResultValue.Text = Math.Abs(result) >= 0.01 ? result.ToString("F2") : result.ToString("G");
+        }
+        catch (KeyNotFoundException)
+        {
+            ResultValue.Text = "Invalid input";
+        }
+        catch (Exception ex)
+        {
+            ResultValue.Text = ex.Message;
+        }
+    }
 
     private void SwapUnits(object? sender, RoutedEventArgs e)
     {
-        var fromIdx = FromUnitComboBox.SelectedIndex;
-        var toIdx = ToUnitComboBox.SelectedIndex;
-        
         var fromVal = FromValue.Text;
         var resultVal = ResultValue.Text;
         FromValue.Text = resultVal;
         ResultValue.Text = fromVal;
-        
-        FromUnitComboBox.SelectedIndex = toIdx;
-        ToUnitComboBox.SelectedIndex = fromIdx;
-        
+
+        if (_category == "Currency")
+        {
+            (FromCurrencyAutoCompleteBox.Text, ToCurrencyAutoCompleteBox.Text) = (ToCurrencyAutoCompleteBox.Text, FromCurrencyAutoCompleteBox.Text);
+        }
+        else
+        {
+            var fromIdx = FromUnitComboBox.SelectedIndex;
+            var toIdx = ToUnitComboBox.SelectedIndex;
+            FromUnitComboBox.SelectedIndex = toIdx;
+            ToUnitComboBox.SelectedIndex = fromIdx;
+        }
     }
 }

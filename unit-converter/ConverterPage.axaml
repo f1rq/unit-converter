@@ -26,13 +26,15 @@
                 <TextBlock x:Name="TitleText" Grid.ColumnSpan="2" Text="Unit Converter" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center"/>
                 
                 <TextBox x:Name="FromValue" Grid.Column="0" Grid.Row="1" Watermark="Enter value to convert..."/>
-                <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch">
-                        <ComboBoxItem>cm</ComboBoxItem>
-                        <ComboBoxItem>m</ComboBoxItem>
-                        <ComboBoxItem>km</ComboBoxItem>
-                        <ComboBoxItem>mi</ComboBoxItem>
-                </ComboBox>
                 
+                <!-- Select units for currency conversions -->
+                <AutoCompleteBox Grid.Column="1" Grid.Row="1" x:Name="FromCurrencyAutoCompleteBox" Watermark="From currency..." IsVisible="False"/>
+                <AutoCompleteBox Grid.Column="1" Grid.Row="3" x:Name="ToCurrencyAutoCompleteBox" Watermark="To currency..." IsVisible="False"/>
+                
+                <!-- Select units for all other conversions -->
+                <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True"/>
+                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True"/>
+            
                 <Button x:Name="UnitSwapBtn" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center" Classes="Tertiary" FontSize="20" Content="↕"/>
                 
                 <Border Grid.Column="0" Grid.Row="3" 
@@ -43,12 +45,7 @@
                         <TextBlock x:Name="ResultValue" Text="0" VerticalAlignment="Center"/>
                 </Border>
                 
-                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch">
-                        <ComboBoxItem>cm</ComboBoxItem>
-                        <ComboBoxItem>m</ComboBoxItem>
-                        <ComboBoxItem>km</ComboBoxItem>
-                        <ComboBoxItem>mi</ComboBoxItem>
-                </ComboBox>
+                
 
                 <Button x:Name="ResetButton" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
                 <Button x:Name="ConvertButton" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Classes="Success">Convert</Button>
