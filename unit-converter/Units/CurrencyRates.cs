@@ -7,15 +7,11 @@ namespace unit_converter.Units;
 
 public class CurrencyRates
 {
-    public static Dictionary<string, double> Rates { get; private set; } = new()
-    {
-        { "USD", 1.0 },
-        { "EUR", 0.92 },
-        { "GBP", 0.81 },
-        { "PLN", 4.30 },
-        { "JPY", 134.50 }
-    };
+    public static Dictionary<string, double> Rates { get; private set; } = new();
 
+    public static IEnumerable<string> GetAvailableCurrencies()
+        => Rates.Keys;
+    
     private static readonly HttpClient _http = new();
 
     public static async Task UpdateRatesAsync()
