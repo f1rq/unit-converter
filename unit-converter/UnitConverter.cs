@@ -7,20 +7,20 @@ namespace unit_converter;
 public class UnitConverter
 {
     // Sample units by category
-    private readonly Dictionary<string, List<string>> _unitsByCategory =
+    private readonly Dictionary<string, Func<IEnumerable<string>>> _unitsByCategory =
         new()
         {
-            { "Length", new() { "cm", "m", "km", "mi" } },
-            { "Weight", new() { "g", "kg", "lb", "oz" } },
-            { "Area", new() { "m²", "km²", "mi²", "acres", "hectares" } },
-            { "Currency", new() { "USD", "EUR", "GBP", "PLN", "JPY", "CZK", "CHF", "SEK", "DKK", "HUF", "BGN", "RON", "CNY", "KRW"} }
+            { "Length", () => LengthUnits.Factors.Keys },
+            { "Weight", () => WeightUnits.Factors.Keys },
+            { "Area", () => AreaUnits.Factors.Keys },
+            { "Currency", () => CurrencyRates.GetAvailableCurrencies() }
         };
     
     public IEnumerable<string> GetCategories()
         => _unitsByCategory.Keys;
     
     public IEnumerable<string> GetUnits(string category)
-        => _unitsByCategory[category];
+        => _unitsByCategory[category]();
 
     public double Convert(string category, string from, string to, double value)
     {
