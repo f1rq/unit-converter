@@ -13,7 +13,7 @@ public class UnitConverter
             { "Length", new() { "cm", "m", "km", "mi" } },
             { "Weight", new() { "g", "kg", "lb", "oz" } },
             { "Area", new() { "m²", "km²", "mi²", "acres", "hectares" } },
-            { "Currency", new() { "USD", "EUR", "GBP", "PLN", "JPY" } }
+            { "Currency", new() { "USD", "EUR", "GBP", "PLN", "JPY", "CZK" } }
         };
     
     public IEnumerable<string> GetCategories()
