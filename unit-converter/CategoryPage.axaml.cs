@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using unit_converter.Units;
 
 namespace unit_converter;
 
@@ -31,8 +32,21 @@ public partial class CategoryPage : UserControl
         foreach (var category in _converter.GetCategories())
         {
             var button = new Button { Content = category, Height = 100, Width = 100};
-            button.Click += (_, __) => _mainWindow?.ShowConverter(category);
-
+            button.Click += async (_, __) =>
+            {
+                if (category == "Currency")
+                {
+                    try
+                    {
+                        await CurrencyRates.UpdateRatesAsync();
+                    }
+                    catch
+                    {
+                        // Ignore errors, use existing rates
+                    }
+                }
+                _mainWindow?.ShowConverter(category);
+            };
             if (_mainWindow == null)
                 button.IsEnabled = true;
 

@@ -12,8 +12,8 @@ public class UnitConverter
         {
             { "Length", new() { "cm", "m", "km", "mi" } },
             { "Weight", new() { "g", "kg", "lb", "oz" } },
-            { "Area", new() { "m²", "km²", "mi²", "acres", "hectares" } }, // TODO: Implement Area conversion
-            { "Currency", new() { "USD", "EUR", "GBP", "PLN", "JPY" } } // TODO: Implement Currency conversion
+            { "Area", new() { "m²", "km²", "mi²", "acres", "hectares" } },
+            { "Currency", new() { "USD", "EUR", "GBP", "PLN", "JPY" } }
         };
     
     public IEnumerable<string> GetCategories()
@@ -24,11 +24,18 @@ public class UnitConverter
 
     public double Convert(string category, string from, string to, double value)
     {
+        if (category == "Currency")
+        {
+            double valueInUsd = value / CurrencyRates.Rates[from];
+            return valueInUsd * CurrencyRates.Rates[to];
+        }
+        
         var factors = category switch
         {
             "Length" => LengthUnits.Factors,
             "Weight" => WeightUnits.Factors,
             "Area" => AreaUnits.Factors,
+            "Currency" => CurrencyRates.Rates,
             _ => throw new ArgumentException("Unknown category")
         };
         
