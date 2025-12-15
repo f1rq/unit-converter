@@ -2,13 +2,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
-            <!-- <Button Content="Length" Width="100" Height="100" FontSize="16"></Button> -->
-            
-            <TextBox x:Name="FromValue" Grid.Column="0" Grid.Row="1" Watermark="Enter value to convert..."/>
-            <!-- -->
-            <!-- <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch"> -->
-            <!--     <ComboBoxItem>cm</ComboBoxItem> -->
-            <!-- </ComboBox> -->
+            <StackPanel Spacing="20">
+                <Button Content="Click Me!" />
+                <Button Classes="accent" Content="Click Me!" />
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
@@ -19,7 +16,6 @@
         <Color x:Key="FocusLightBackgroundColor">#ced4da</Color>
         <Color x:Key="HighlightColor">#3B4147</Color>
         <Color x:Key="ForegroundColor">#F8F9FA</Color>
-        
         <Color x:Key="TransparentColor">#00000000</Color>
         
         <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
@@ -27,27 +23,13 @@
         <SolidColorBrush x:Key="FocusLightBackgroundBrush" Color="{StaticResource FocusLightBackgroundColor}"/>
         <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}"/>
         <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}"/>
-        
         <SolidColorBrush x:Key="TransparentBrush" Color="{StaticResource TransparentColor}"/>
+        
+        <Thickness x:Key="ButtonPadding">12,10</Thickness>
     </Styles.Resources>
     
     <Style Selector="Window">
         <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
-    </Style>
-    
-    <Style Selector="Button">
-        <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
-        <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="Padding" Value="12,10"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        
-    </Style>
-    
-    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{StaticResource HighlightBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
     </Style>
 </Styles>
