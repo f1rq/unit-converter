@@ -20,7 +20,7 @@
   <ControlTheme x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
     <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForeground}" />
     <Setter Property="Background" Value="{DynamicResource ComboBoxItemBackground}" />
-    <Setter Property="Padding" Value="{DynamicResource ComboBoxItemThemePadding}" />
+    <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="Template">
       <ControlTemplate>
@@ -29,7 +29,7 @@
                           Background="{DynamicResource BackgroundBrush}"
                           BorderBrush="{DynamicResource TransparentBrush}"
                           BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="{TemplateBinding CornerRadius}"
+                          CornerRadius="0"
                           ContentTemplate="{TemplateBinding ContentTemplate}"
                           Content="{TemplateBinding Content}"
                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -37,19 +37,14 @@
                           Padding="{TemplateBinding Padding}" />
       </ControlTemplate>
     </Setter>
-
-    <!-- <Style Selector="ComboBoxItem"> -->
-    <!--   <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/> -->
-    <!-- </Style> -->
-    <!-- -->
-    <!-- <Style Selector="ComboBoxItem:pointerover /template/ ContentPresenter"> -->
-    <!--   <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/> -->
-    <!-- </Style> -->
-    <!-- -->
-    <!-- <Style Selector="ComboBoxItem:selected /template/ ContentPresenter"> -->
-    <!--   <Setter Property="Background" Value="{StaticResource HighlightBrush}" /> -->
-    <!-- </Style> -->
     
+    <Style Selector="^:nth-child(1) /template/ ContentPresenter">
+      <Setter Property="CornerRadius" Value="16 16 0 0"/>
+    </Style>
+
+    <Style Selector="^:nth-last-child(1) /template/ ContentPresenter">
+      <Setter Property="CornerRadius" Value="0 0 16 16"/>
+    </Style>
     
     <!--  PointerOver state  -->
     <Style Selector="^:pointerover /template/ ContentPresenter">

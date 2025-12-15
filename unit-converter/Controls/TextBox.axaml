@@ -37,7 +37,7 @@
     <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrush}" />
     <Setter Property="Focusable" Value="False"/>
     <Setter Property="MinWidth" Value="34" />
-    <Setter Property="Padding" Value="{DynamicResource ButtonPadding}" />
+    <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
     <Setter Property="Width" Value="{Binding $self.Bounds.Height}"/>
     <Setter Property="TextElement.Foreground" Value="{DynamicResource TextControlButtonForeground}"/>
     <Setter Property="Template">
@@ -94,8 +94,8 @@
   </ControlTheme>
 
   <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
-    <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
-    <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />
+    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
     <Setter Property="CaretBrush" Value="{DynamicResource TextControlForeground}" />
     <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />
     <Setter Property="SelectionBrush" Value="{DynamicResource TextControlSelectionHighlightColor}" />
@@ -103,7 +103,7 @@
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
     <Setter Property="MinHeight" Value="{DynamicResource TextControlThemeMinHeight}" />
     <Setter Property="MinWidth" Value="{DynamicResource TextControlThemeMinWidth}" />
-    <Setter Property="Padding" Value="{DynamicResource TextControlThemePadding}" />
+    <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
     <Setter Property="FocusAdorner" Value="{x:Null}" />
     <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
     <Setter Property="ContextFlyout" Value="{OnFormFactor Desktop={StaticResource DefaultTextBoxContextFlyout}, Mobile={StaticResource HorizontalTextBoxContextFlyout}}" />
@@ -113,10 +113,10 @@
           <Panel>
             <Border
               Name="PART_BorderElement"
-              Background="{TemplateBinding Background}"
-              BorderBrush="{TemplateBinding BorderBrush}"
+              Background="{DynamicResource ControlBackgroundBrush}"
+              BorderBrush="{DynamicResource TransparentBrush}"
               BorderThickness="{TemplateBinding BorderThickness}"
-              CornerRadius="{TemplateBinding CornerRadius}"
+              CornerRadius="{DynamicResource ControlCornerRadius}"
               MinWidth="{TemplateBinding MinWidth}"
               MinHeight="{TemplateBinding MinHeight}">
             </Border>
@@ -193,12 +193,6 @@
         </DataValidationErrors>
       </ControlTemplate>
     </Setter>
-
-    <Style Selector="^">
-      <Setter Property="Background" Value="{StaticResource SecondaryBackgroundBrush}"/>
-      <Setter Property="BorderBrush" Value="#000000aa" />
-      <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
-    </Style>
     
     <!-- Disabled State -->
     <Style Selector="^:disabled">
@@ -217,9 +211,10 @@
     <!-- PointerOver State-->
     <Style Selector="^:pointerover">
       <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
-
+      
       <Style Selector="^ /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="#000000aa"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
       </Style>
 
@@ -238,8 +233,8 @@
 
       <Style Selector="^ /template/ Border#PART_BorderElement">
         <Setter Property="Background" Value="{DynamicResource HighlightBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}"/>
-        <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}"/>
+        <Setter Property="BorderThickness" Value="1" />
       </Style>
     </Style>
 

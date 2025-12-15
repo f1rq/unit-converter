@@ -11,12 +11,12 @@
   </Design.PreviewWith>
 
   <ControlTheme x:Key="{x:Type Button}" TargetType="Button">
-    <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
+    <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
-    <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
-    <Setter Property="Padding" Value="{DynamicResource ButtonPadding}" />
+    <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="RenderTransform" Value="none" />
@@ -29,15 +29,15 @@
     <Setter Property="Template">
       <ControlTemplate>
         <ContentPresenter x:Name="PART_ContentPresenter"
-                          Background="{TemplateBinding Background}"
+                          Background="{DynamicResource ControlBackgroundBrush}"
                           BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="{TemplateBinding BorderThickness}"
-                          CornerRadius="{TemplateBinding CornerRadius}"
+                          BorderThickness="1"
+                          CornerRadius="{DynamicResource ControlCornerRadius}"
                           Content="{TemplateBinding Content}"
                           ContentTemplate="{TemplateBinding ContentTemplate}"
-                          Padding="{TemplateBinding Padding}"
-                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                          Padding="{DynamicResource ControlPadding}"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center" />
       </ControlTemplate>
     </Setter>
 
@@ -52,6 +52,7 @@
     <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
       <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
       <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}" />
     </Style>
 
     <Style Selector="^:pressed">
@@ -59,8 +60,8 @@
     </Style>
 
     <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
-      <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPressed}" />
+      <Setter Property="Background" Value="{DynamicResource ThirdBackgroundColor}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}" />
       <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
     </Style>
 

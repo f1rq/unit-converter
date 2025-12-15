@@ -1,7 +1,7 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Padding="20">
+        <Border Padding="200">
             <StackPanel Spacing="20">
                 <Button Content="Click Me!" />
                 <Button Classes="accent" Content="Click Me!" />
@@ -13,10 +13,13 @@
     <Styles.Resources>
         <Color x:Key="BackgroundColor">#212529</Color>
         <Color x:Key="SecondaryBackgroundColor">#2D3339</Color>
+        <Color x:Key="ThirdBackgroundColor">#3A4148</Color>
         <Color x:Key="FocusLightBackgroundColor">#ced4da</Color>
-        <Color x:Key="HighlightColor">#3B4147</Color>
+        <Color x:Key="HighlightColor">#2D3238</Color>
         <Color x:Key="ForegroundColor">#F8F9FA</Color>
         <Color x:Key="TransparentColor">#00000000</Color>
+        
+        <Color x:Key="ControlBackgroundColor">#50000000</Color> 
         
         <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
         <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="{StaticResource SecondaryBackgroundColor}"/>
@@ -25,11 +28,44 @@
         <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}"/>
         <SolidColorBrush x:Key="TransparentBrush" Color="{StaticResource TransparentColor}"/>
         
-        <Thickness x:Key="ButtonPadding">12,10</Thickness>
+        <SolidColorBrush x:Key="ControlBackgroundBrush" Color="{StaticResource ControlBackgroundColor}"/>
+        
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%" x:Key="GradientBackgroundBrush">
+            <GradientStop Color="{StaticResource BackgroundColor}" Offset="0"/>
+            <GradientStop Color="{StaticResource ThirdBackgroundColor}" Offset="1"/>
+        </LinearGradientBrush>
+        
+        <Thickness x:Key="ControlPadding">12,10</Thickness>
+        <CornerRadius x:Key="ControlCornerRadius">16</CornerRadius>
     </Styles.Resources>
     
     <Style Selector="Window">
-        <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource GradientBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
     </Style>
+    
+    
+    
+    <Style Selector="AutoCompleteBox ListBoxItem">
+        <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    </Style>
+    
+    <Style Selector="AutoCompleteBox ListBoxItem:nth-child(1) /template/ ContentPresenter">
+        <Setter Property="CornerRadius" Value="16 16 0 0" />
+    </Style>
+    
+    <Style Selector="AutoCompleteBox ListBoxItem:nth-last-child(1) /template/ ContentPresenter">
+        <Setter Property="CornerRadius" Value="0 0 16 16" />
+    </Style>
+    
+    <Style Selector="AutoCompleteBox ListBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+    </Style>
+    
+    <Style Selector="AutoCompleteBox ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
+    </Style>
+    
 </Styles>

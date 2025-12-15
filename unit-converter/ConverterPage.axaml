@@ -38,10 +38,9 @@
                 <Button x:Name="UnitSwapBtn" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center" Classes="Tertiary" FontSize="20" Content="↕"/>
                 
                 <Border Grid.Column="0" Grid.Row="3" 
-                        Background="{DynamicResource SecondaryBackgroundBrush}" 
-                        Padding="{DynamicResource TextControlThemePadding}" 
-                        CornerRadius="{DynamicResource ControlCornerRadius}"
-                        Height="{DynamicResource TextControlThemeMinHeight}">
+                        Background="{DynamicResource ControlBackgroundBrush}" 
+                        Padding="{DynamicResource ControlPadding}" 
+                        CornerRadius="{DynamicResource ControlCornerRadius}">
                         <TextBlock x:Name="ResultValue" Text="0" VerticalAlignment="Center"/>
                 </Border>
                 

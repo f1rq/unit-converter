@@ -58,13 +58,13 @@
   <x:Double x:Key="ComboBoxMinHeight">32</x:Double>
 
   <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
-    <Setter Property="Padding" Value="{DynamicResource ComboBoxPadding}" />
+    <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
     <Setter Property="FocusAdorner" Value="{x:Null}" />
     <Setter Property="MaxDropDownHeight" Value="504" />
     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
-    <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
+    <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
-    <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThemeThickness}" />
+    <Setter Property="BorderThickness" Value="1" />
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
@@ -81,10 +81,10 @@
             <Border x:Name="Background"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Background="{DynamicResource SecondaryBackgroundBrush}"
+                    Background="{DynamicResource ControlBackgroundBrush}"
                     BorderBrush="Transparent"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource ControlCornerRadius}"
                     MinWidth="{DynamicResource ComboBoxThemeMinWidth}" />
             <Border x:Name="HighlightBackground"
                     Grid.Column="0"
@@ -127,7 +127,7 @@
                      Background="Transparent"
                      Text="{TemplateBinding Text, Mode=TwoWay}"
                      Watermark="{TemplateBinding PlaceholderText}"
-                     BorderThickness="0"
+                     BorderThickness="1"
                      IsVisible="{TemplateBinding IsEditable}">
               <TextBox.Resources>
                 <SolidColorBrush x:Key="TextControlBackgroundFocused">Transparent</SolidColorBrush>
@@ -166,11 +166,11 @@
                    InheritsTransform="True">
               <Border x:Name="PopupBorder"
                       Background="{DynamicResource BackgroundBrush}"
-                      BorderBrush="{DynamicResource TransparentBrush}"
+                      BorderBrush="{DynamicResource ForegroundBrush}"
                       BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
                       Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
                       HorizontalAlignment="Stretch"
-                      CornerRadius="{DynamicResource OverlayCornerRadius}">
+                      CornerRadius="{DynamicResource ControlCornerRadius}">
                 <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                               VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
                               IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
@@ -188,13 +188,13 @@
     <!--  PointerOver State  -->
     <Style Selector="^:pointerover /template/ Border#Background">
       <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
-      <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}" />
     </Style>
 
     <!--  Pressed State  -->
     <Style Selector="^:pressed /template/ Border#Background">
       <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
-      <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}" />
     </Style>
 
     <!-- Error State -->
@@ -219,7 +219,7 @@
     <Style Selector="^:focus-visible">
       <Style Selector="^ /template/ Border#HighlightBackground">
         <Setter Property="IsVisible" Value="True" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxBackgroundBorderBrushFocused}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}" />
       </Style>
       <Style Selector="^ /template/ ContentControl#ContentPresenter">
         <Setter Property="Foreground" Value="{DynamicResource ComboBoxForegroundFocused}" />
