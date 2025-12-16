@@ -11,20 +11,19 @@ public partial class ConverterPage : UserControl
 {
     private readonly UnitConverter _converter;
     private readonly string _category;
-    private readonly MainWindow _mainWindow;
+    private readonly MainWindow? _mainWindow;
     
     public ConverterPage()
     {
         InitializeComponent();
-        _mainWindow = null;
         _converter = new UnitConverter();
         _category = "Length";
 
         ConvertButton.Click += OnConvert;
         ResetButton.Click += OnReset;
         UnitSwapBtn.Click += SwapUnits;
-        BackButton.Click += (_, __) => _mainWindow?.ShowCategoryPage();
-        TitleText.Text = $"{_category}";
+        BackButton.Click += (_, _) => _mainWindow?.ShowCategoryPage();
+        TitleText.Text = _category;
         
         UpdateUnits();
     }
@@ -33,9 +32,7 @@ public partial class ConverterPage : UserControl
     {
         _mainWindow = mainWindow;
         _category = category;
-        
-        TitleText.Text = $"{_category}";
-        
+        TitleText.Text = _category;
         UpdateUnits();
     }
 
@@ -108,12 +105,6 @@ public partial class ConverterPage : UserControl
         }
 
         if (string.IsNullOrWhiteSpace(fromUnit) || string.IsNullOrWhiteSpace(toUnit))
-        {
-            ResultValue.Text = "Select units";
-            return;
-        }
-
-        if (string.IsNullOrEmpty(fromUnit) || string.IsNullOrEmpty(toUnit))
         {
             ResultValue.Text = "Select units";
             return;

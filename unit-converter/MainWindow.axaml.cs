@@ -4,6 +4,10 @@ namespace unit_converter;
 
 public partial class MainWindow : Window
 {
+    public MainWindow() : this(null)
+    {
+    }
+    
     public MainWindow(string? initialCategory = null)
     {
         InitializeComponent();
