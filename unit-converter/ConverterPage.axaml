@@ -25,22 +25,28 @@
             
                 <TextBlock x:Name="TitleText" Grid.ColumnSpan="2" Text="Unit Converter" FontSize="32" HorizontalAlignment="Center"/>
                 
-                <TextBox x:Name="FromValue" Grid.Column="0" Grid.Row="1" Watermark="Enter value to convert..."/>
+                <TextBox x:Name="FromValue"
+                         Grid.Column="0" 
+                         Grid.Row="1" 
+                         Watermark="Enter value to convert..."
+                         VerticalAlignment="Stretch"
+                         VerticalContentAlignment="Center"/>
                 
                 <!-- Select units for currency conversions -->
-                <AutoCompleteBox Grid.Column="1" Grid.Row="1" x:Name="FromCurrencyAutoCompleteBox" Watermark="From currency..." IsVisible="False"/>
-                <AutoCompleteBox Grid.Column="1" Grid.Row="3" x:Name="ToCurrencyAutoCompleteBox" Watermark="To currency..." IsVisible="False"/>
+                <AutoCompleteBox Grid.Column="1" Grid.Row="1" x:Name="FromCurrencyAutoCompleteBox" Watermark="From currency..." IsVisible="False" VerticalAlignment="Stretch"/>
+                <AutoCompleteBox Grid.Column="1" Grid.Row="3" x:Name="ToCurrencyAutoCompleteBox" Watermark="To currency..." IsVisible="False" VerticalAlignment="Stretch"/>
                 
                 <!-- Select units for all other conversions -->
-                <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True"/>
-                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True"/>
+                <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
             
                 <Button x:Name="UnitSwapBtn" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center" Classes="Tertiary" FontSize="20" Content="↕"/>
                 
                 <Border Grid.Column="0" Grid.Row="3" 
                         Background="{DynamicResource ControlBackgroundBrush}" 
                         Padding="{DynamicResource ControlPadding}" 
-                        CornerRadius="{DynamicResource ControlCornerRadius}">
+                        CornerRadius="{DynamicResource ControlCornerRadius}"
+                        VerticalAlignment="Stretch">
                         <TextBlock x:Name="ResultValue" Text="0" VerticalAlignment="Center"/>
                 </Border>
                 

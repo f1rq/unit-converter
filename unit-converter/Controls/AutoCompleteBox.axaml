@@ -48,7 +48,8 @@
                              DataValidationErrors.Errors="{TemplateBinding (DataValidationErrors.Errors)}"
                              MaxLength="{TemplateBinding MaxLength}"
                              InnerLeftContent="{TemplateBinding InnerLeftContent}"
-                             InnerRightContent="{TemplateBinding InnerRightContent}" />
+                             InnerRightContent="{TemplateBinding InnerRightContent}"
+                             VerticalContentAlignment="Center"/>
                     <Popup Name="PART_Popup"
                            WindowManagerAddShadowHint="False"
                            MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
