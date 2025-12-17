@@ -40,7 +40,22 @@
                 <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
                 <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
             
-                <Button x:Name="UnitSwapBtn" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Center" Classes="Tertiary" FontSize="20" Content="↕"/>
+                <Button x:Name="UnitSwapBtn"
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="2" 
+                        Grid.Row="2" 
+                        HorizontalAlignment="Center"
+                        Width="42"
+                        Height="42">
+                        <Viewbox>
+                                <Path Data="M17 3l0 18 M10 18l-3 3l-3 -3 M7 21l0 -18 M20 6l-3 -3l-3 3"
+                                              StrokeThickness="2"
+                                              Stroke="{DynamicResource ForegroundBrush}"
+                                              Stretch="Uniform"
+                                              StrokeLineCap="Round"
+                                              Margin="2"/>
+                        </Viewbox>
+                </Button>
                 
                 <Border Grid.Column="0" Grid.Row="3" 
                         Background="{DynamicResource ControlBackgroundBrush}" 
@@ -49,9 +64,7 @@
                         VerticalAlignment="Stretch">
                         <TextBlock x:Name="ResultValue" Text="0" VerticalAlignment="Center"/>
                 </Border>
-                
-                
-
+            
                 <Button x:Name="ResetButton" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
                 <Button x:Name="ConvertButton" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Classes="Success">Convert</Button>
         </Grid>
