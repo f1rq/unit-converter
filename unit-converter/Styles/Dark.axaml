@@ -15,7 +15,8 @@
         <Color x:Key="SecondaryBackgroundColor">#2D3339</Color>
         <Color x:Key="ThirdBackgroundColor">#3A4148</Color>
         <Color x:Key="FocusLightBackgroundColor">#ced4da</Color>
-        <Color x:Key="HighlightColor">#2D3238</Color>
+        <Color x:Key="HighlightColor">#80000000</Color>
+        <Color x:Key="PressedColor">#90000000</Color>
         <Color x:Key="ForegroundColor">#F8F9FA</Color>
         <Color x:Key="TransparentColor">#00000000</Color>
         
@@ -25,6 +26,7 @@
         <SolidColorBrush x:Key="SecondaryBackgroundBrush" Color="{StaticResource SecondaryBackgroundColor}"/>
         <SolidColorBrush x:Key="FocusLightBackgroundBrush" Color="{StaticResource FocusLightBackgroundColor}"/>
         <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}"/>
+        <SolidColorBrush x:Key="PressedBrush" Color="{StaticResource PressedColor}"/>
         <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}"/>
         <SolidColorBrush x:Key="TransparentBrush" Color="{StaticResource TransparentColor}"/>
         
@@ -44,8 +46,6 @@
         <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
     </Style>
     
-    
-    
     <Style Selector="AutoCompleteBox ListBoxItem">
         <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
@@ -61,11 +61,11 @@
     </Style>
     
     <Style Selector="AutoCompleteBox ListBoxItem:pointerover /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
     </Style>
     
     <Style Selector="AutoCompleteBox ListBoxItem:selected /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ThirdBackgroundColor}" />
     </Style>
     
 </Styles>

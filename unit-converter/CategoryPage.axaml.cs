@@ -41,7 +41,7 @@ public partial class CategoryPage : UserControl
             var path = new Path
             {
                 Data = Geometry.Parse(pathData),
-                StrokeThickness = 1.5,
+                StrokeThickness = 0.8,
                 Stroke = Brushes.White,
                 Stretch = Stretch.Uniform,
                 StrokeLineCap = PenLineCap.Round,

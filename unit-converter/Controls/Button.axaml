@@ -14,7 +14,7 @@
     <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
-    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
     <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
     <Setter Property="HorizontalAlignment" Value="Center" />
@@ -31,7 +31,7 @@
         <ContentPresenter x:Name="PART_ContentPresenter"
                           Background="{DynamicResource ControlBackgroundBrush}"
                           BorderBrush="{TemplateBinding BorderBrush}"
-                          BorderThickness="1"
+                          BorderThickness="0"
                           CornerRadius="{DynamicResource ControlCornerRadius}"
                           Content="{TemplateBinding Content}"
                           ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -60,7 +60,7 @@
     </Style>
 
     <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource ThirdBackgroundColor}" />
+      <Setter Property="Background" Value="{DynamicResource PressedBrush}" />
       <Setter Property="BorderBrush" Value="{DynamicResource ForegroundBrush}" />
       <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
     </Style>

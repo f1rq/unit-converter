@@ -64,7 +64,7 @@
     <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
     <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
-    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="BorderThickness" Value="0" />
     <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
@@ -83,7 +83,7 @@
                     Grid.ColumnSpan="2"
                     Background="{DynamicResource ControlBackgroundBrush}"
                     BorderBrush="Transparent"
-                    BorderThickness="1"
+                    BorderThickness="0"
                     CornerRadius="{DynamicResource ControlCornerRadius}"
                     MinWidth="{DynamicResource ComboBoxThemeMinWidth}" />
             <Border x:Name="HighlightBackground"
@@ -127,7 +127,7 @@
                      Background="Transparent"
                      Text="{TemplateBinding Text, Mode=TwoWay}"
                      Watermark="{TemplateBinding PlaceholderText}"
-                     BorderThickness="1"
+                     BorderThickness="0"
                      IsVisible="{TemplateBinding IsEditable}">
               <TextBox.Resources>
                 <SolidColorBrush x:Key="TextControlBackgroundFocused">Transparent</SolidColorBrush>
@@ -166,8 +166,8 @@
                    InheritsTransform="True">
               <Border x:Name="PopupBorder"
                       Background="{DynamicResource BackgroundBrush}"
-                      BorderBrush="{DynamicResource ForegroundBrush}"
-                      BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
+                      BorderBrush="{DynamicResource TransparentBrush}"
+                      BorderThickness="0"
                       Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
                       HorizontalAlignment="Stretch"
                       CornerRadius="{DynamicResource ControlCornerRadius}">
@@ -175,7 +175,7 @@
                               VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
                               IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
                   <ItemsPresenter Name="PART_ItemsPresenter"
-                                  Margin="{DynamicResource ComboBoxDropdownContentMargin}"
+                                  Margin="0"
                                   ItemsPanel="{TemplateBinding ItemsPanel}" />
                 </ScrollViewer>
               </Border>

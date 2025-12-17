@@ -39,7 +39,7 @@
                              Foreground="{DynamicResource ForegroundBrush}"
                              Background="{DynamicResource ControlBackgroundBrush}"
                              BorderBrush="{DynamicResource TransparentBrush}"
-                             BorderThickness="1"
+                             BorderThickness="0"
                              CornerRadius="{DynamicResource ControlCornerRadius}"
                              CaretIndex="{TemplateBinding CaretIndex, Mode=TwoWay}"
                              ClearSelectionOnLostFocus="{TemplateBinding ClearSelectionOnLostFocus}"
@@ -57,14 +57,15 @@
                            PlacementTarget="{TemplateBinding}">
                         <Border Name="PART_SuggestionsContainer"
                                 Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
-                                BorderThickness="1"
-                                BorderBrush="{DynamicResource ForegroundBrush}"
+                                BorderThickness="0"
+                                BorderBrush="{DynamicResource TransparentBrush}"
                                 Background="{DynamicResource BackgroundBrush}"
                                 CornerRadius="{DynamicResource ControlCornerRadius}">
                             <ListBox Name="PART_SelectingItemsControl"
-                                     BorderThickness="1 0"
-                                     Background="{DynamicResource ForegroundBrush}"
+                                     BorderThickness="0"
+                                     Background="{DynamicResource BackgroundBrush}"
                                      ItemTemplate="{TemplateBinding ItemTemplate}"
+                                     ItemContainerTheme="{StaticResource {x:Type ComboBoxItem}}"
                                      CornerRadius="{DynamicResource ControlCornerRadius}"
                                      Margin="{DynamicResource AutoCompleteListPadding}" />
                         </Border>

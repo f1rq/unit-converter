@@ -15,7 +15,7 @@
                         <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
-                <TextBlock Grid.Row="0" Text="Unit Converter" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Text="Unit Converter" FontSize="32" HorizontalAlignment="Center"/>
 
                 <UniformGrid x:Name="CatBtnStackPanel" Grid.Row="1" Margin="20" ColumnSpacing="30" RowSpacing="30" Rows="2" Columns="3" HorizontalAlignment="Center"/>
         </Grid>

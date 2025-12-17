@@ -23,7 +23,7 @@
                 
                 <Button x:Name="BackButton" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Back" Classes="Tertiary" />
             
-                <TextBlock x:Name="TitleText" Grid.ColumnSpan="2" Text="Unit Converter" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TitleText" Grid.ColumnSpan="2" Text="Unit Converter" FontSize="32" HorizontalAlignment="Center"/>
                 
                 <TextBox x:Name="FromValue" Grid.Column="0" Grid.Row="1" Watermark="Enter value to convert..."/>
                 

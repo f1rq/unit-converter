@@ -48,7 +48,7 @@
     
     <!--  PointerOver state  -->
     <Style Selector="^:pointerover /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+      <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
       <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
       <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     </Style>
@@ -62,7 +62,7 @@
 
     <!--  Pressed state  -->
     <Style Selector="^:pressed /template/ ContentPresenter">
-      <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+      <Setter Property="Background" Value="{DynamicResource ThirdBackgroundColor}" />
       <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
       <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     </Style>
@@ -70,7 +70,7 @@
     <!--  Selected state  -->
     <Style Selector="^:selected">
       <Style Selector="^ /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ThirdBackgroundColor}" />
         <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
       </Style>
@@ -82,7 +82,7 @@
       </Style>
       <!--  Selected PointerOver state  -->
       <Style Selector="^:pointerover /template/ ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+        <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource TransparentBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
       </Style>
