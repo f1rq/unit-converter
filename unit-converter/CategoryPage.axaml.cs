@@ -34,7 +34,7 @@ public partial class CategoryPage : UserControl
 
         foreach (var category in _converter.GetCategories())
         {
-            var button = new Button { Height = 100, Width = 100, Padding = new Thickness(20) };
+            var button = new Button { Height = 80, Width = 80, Padding = new Thickness(15) };
 
             var pathData = GetPathDataForCategory(category);
             
