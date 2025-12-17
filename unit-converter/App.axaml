@@ -18,6 +18,8 @@
                 <MergeResourceInclude Source="/Controls/Button.axaml"></MergeResourceInclude>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        
+        <FontFamily x:Key="Figtree">/Assets/Fonts/Figtree.ttf#Figtree</FontFamily>
     </Application.Resources>
 
 </Application>

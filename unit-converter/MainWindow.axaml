@@ -6,6 +6,7 @@
         Width="500" Height="380"
         MinWidth="500" MinHeight="380"
         x:Class="unit_converter.MainWindow"
+        FontFamily="{DynamicResource Figtree}"
         Title="unit_converter">
         
         <ContentControl x:Name="MainContent"/>

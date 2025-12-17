@@ -22,4 +22,13 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\Fonts\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Fonts\Figtree.ttf" />
+      <AvaloniaResource Include="Assets\Fonts\Figtree.ttf" />
+    </ItemGroup>
 </Project>
