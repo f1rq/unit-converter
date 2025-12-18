@@ -16,7 +16,8 @@ public class UnitConverter
             { "Area", () => AreaUnits.Factors.Keys },
             { "Volume", () => VolumeUnits.Factors.Keys },
             { "Currency", () => CurrencyRates.GetAvailableCurrencies() },
-            { "Data", () => DataUnits.Units.Keys }
+            { "Data", () => DataUnits.Units.Keys },
+            { "Time", () => TimeUnits.Factors.Keys },
         };
     
     public IEnumerable<string> GetCategories()
@@ -44,6 +45,7 @@ public class UnitConverter
                 u => u.Key,
                 u => u.Value.Factor
             ),
+            "Time" => TimeUnits.Factors,
             _ => throw new ArgumentException("Unknown category")
         };
         
