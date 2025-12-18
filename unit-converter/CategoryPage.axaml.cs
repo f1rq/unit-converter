@@ -2,6 +2,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
+using Avalonia.Layout;
 using Avalonia.Media;
 
 namespace unit_converter;
@@ -34,7 +35,7 @@ public partial class CategoryPage : UserControl
 
         foreach (var category in _converter.GetCategories())
         {
-            var button = new Button { Height = 80, Width = 80, Padding = new Thickness(15) };
+            var button = new Button { Height = 100, Width = 100, Padding = new Thickness(15) };
 
             var pathData = GetPathDataForCategory(category);
             
@@ -51,10 +52,26 @@ public partial class CategoryPage : UserControl
             var viewbox = new Viewbox
             {
                 Child = path,
+                Height = 50,
                 Margin = new Thickness(5)
             };
 
-            button.Content = viewbox;
+            var textBlock = new TextBlock
+            {
+                Text = category,
+                TextAlignment = TextAlignment.Center,
+                FontSize = 12,
+                Margin = new Thickness(0, 5, 0 ,0)
+            };
+
+            var stackPanel = new StackPanel
+            {
+                Orientation = Orientation.Vertical,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Children = { viewbox, textBlock }
+            };
+            
+            button.Content = stackPanel;
             ToolTip.SetTip(button, category);
             button.Click += (_, _) => _mainWindow?.ShowConverter(category);
 
