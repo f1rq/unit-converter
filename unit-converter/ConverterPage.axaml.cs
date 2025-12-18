@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -84,7 +85,11 @@ public partial class ConverterPage : UserControl
     private void OnConvert(object? sender, RoutedEventArgs e)
     {
         
-        if (!double.TryParse(FromValue.Text, out double fromValue))
+        if (!double.TryParse(
+                FromValue.Text,
+                NumberStyles.Float,
+                CultureInfo.InvariantCulture,
+                out double fromValue))
         {
             ResultValue.Text = "Invalid input";
             return;
@@ -113,7 +118,10 @@ public partial class ConverterPage : UserControl
         try
         {
             double result = _converter.Convert(_category, fromUnit, toUnit, fromValue);
-            ResultValue.Text = Math.Abs(result) >= 0.01 ? result.ToString("F2") : result.ToString("G");
+            ResultValue.Text =
+                Math.Abs(result) >= 0.01
+                    ? result.ToString("0.00", CultureInfo.InvariantCulture)
+                    : result.ToString("0.########", CultureInfo.InvariantCulture);
         }
         catch (KeyNotFoundException)
         {
