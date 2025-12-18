@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using unit_converter.Units;
 
 namespace unit_converter;
@@ -13,7 +14,8 @@ public class UnitConverter
             { "Length", () => LengthUnits.Factors.Keys },
             { "Weight", () => WeightUnits.Factors.Keys },
             { "Area", () => AreaUnits.Factors.Keys },
-            { "Currency", () => CurrencyRates.GetAvailableCurrencies() }
+            { "Currency", () => CurrencyRates.GetAvailableCurrencies() },
+            { "Data", () => DataUnits.Units.Keys }
         };
     
     public IEnumerable<string> GetCategories()
@@ -36,6 +38,10 @@ public class UnitConverter
             "Weight" => WeightUnits.Factors,
             "Area" => AreaUnits.Factors,
             "Currency" => CurrencyRates.Rates,
+            "Data" => DataUnits.Units.ToDictionary(
+                u => u.Key,
+                u => u.Value.Factor
+            ),
             _ => throw new ArgumentException("Unknown category")
         };
         

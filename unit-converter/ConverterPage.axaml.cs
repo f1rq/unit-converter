@@ -39,27 +39,41 @@ public partial class ConverterPage : UserControl
 
     private void UpdateUnits()
     {
+        FromUnitComboBox.Items.Clear();
+        ToUnitComboBox.Items.Clear();
+        
         if (_category == "Currency")
         {
             FromUnitComboBox.IsVisible = false;
             ToUnitComboBox.IsVisible = false;
-
             FromCurrencyAutoCompleteBox.IsVisible = true;
             ToCurrencyAutoCompleteBox.IsVisible = true;
 
             var currencies = CurrencyRates.GetAvailableCurrencies().ToList();
             FromCurrencyAutoCompleteBox.ItemsSource = currencies;
             ToCurrencyAutoCompleteBox.ItemsSource = currencies;
+            return;
         }
         
-        var units = _converter.GetUnits(_category);
-        FromUnitComboBox.Items.Clear();
-        ToUnitComboBox.Items.Clear();
+        FromUnitComboBox.IsVisible = true;
+        ToUnitComboBox.IsVisible = true;
+        FromCurrencyAutoCompleteBox.IsVisible = false;
+        ToCurrencyAutoCompleteBox.IsVisible = false;
 
-        foreach (var unit in units)
+        if (_category == "Data")
         {
-            FromUnitComboBox.Items.Add(new ComboBoxItem { Content = unit });
-            ToUnitComboBox.Items.Add(new ComboBoxItem { Content = unit });
+            var units = DataUnits.Units.Values;
+
+            FromUnitComboBox.ItemsSource = units;
+            ToUnitComboBox.ItemsSource = units;
+        }
+        else
+        {
+            foreach (var unit in _converter.GetUnits(_category))
+            {
+                FromUnitComboBox.Items.Add(new ComboBoxItem { Content = unit });
+                ToUnitComboBox.Items.Add(new ComboBoxItem { Content = unit });
+            }
         }
 
         FromUnitComboBox.SelectedIndex = 0;
@@ -92,6 +106,26 @@ public partial class ConverterPage : UserControl
                 out double fromValue))
         {
             ResultValue.Text = "Invalid input";
+            return;
+        }
+
+        if (_category == "Data")
+        {
+            var from = FromUnitComboBox.SelectedItem as DataUnit;
+            var to = ToUnitComboBox.SelectedItem as DataUnit;
+
+            if (from == null || to == null)
+            {
+                ResultValue.Text = "Select units";
+                return;
+            }
+
+            double result = fromValue * from.Factor / to.Factor;
+            ResultValue.Text =
+                Math.Abs(result) >= 0.01
+                    ? result.ToString("0.00", CultureInfo.InvariantCulture)
+                    : result.ToString("0.########", CultureInfo.InvariantCulture);
+
             return;
         }
 

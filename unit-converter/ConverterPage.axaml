@@ -33,12 +33,12 @@
                          VerticalContentAlignment="Center"/>
                 
                 <!-- Select units for currency conversions -->
-                <AutoCompleteBox Grid.Column="1" Grid.Row="1" x:Name="FromCurrencyAutoCompleteBox" Watermark="From currency..." IsVisible="False" VerticalAlignment="Stretch"/>
-                <AutoCompleteBox Grid.Column="1" Grid.Row="3" x:Name="ToCurrencyAutoCompleteBox" Watermark="To currency..." IsVisible="False" VerticalAlignment="Stretch"/>
+                <AutoCompleteBox Grid.Column="1" Grid.Row="1" x:Name="FromCurrencyAutoCompleteBox" Watermark="From currency..." IsVisible="False" VerticalAlignment="Stretch" MaxDropDownHeight="220"/>
+                <AutoCompleteBox Grid.Column="1" Grid.Row="3" x:Name="ToCurrencyAutoCompleteBox" Watermark="To currency..." IsVisible="False" VerticalAlignment="Stretch" MaxDropDownHeight="220"/>
                 
                 <!-- Select units for all other conversions -->
-                <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
-                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="FromUnitComboBox" Grid.Column="1" Grid.Row="1" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center" MaxDropDownHeight="200"/>
+                <ComboBox x:Name="ToUnitComboBox" Grid.Column="1" Grid.Row="3" SelectedIndex="0" HorizontalAlignment="Stretch" IsVisible="True" VerticalAlignment="Stretch" VerticalContentAlignment="Center" MaxDropDownHeight="220"/>
             
                 <Button x:Name="UnitSwapBtn"
                         Grid.Column="0" 
