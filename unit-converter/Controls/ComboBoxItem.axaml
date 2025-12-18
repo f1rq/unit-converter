@@ -38,14 +38,6 @@
       </ControlTemplate>
     </Setter>
     
-    <Style Selector="^:nth-child(1) /template/ ContentPresenter">
-      <Setter Property="CornerRadius" Value="16 16 0 0"/>
-    </Style>
-
-    <Style Selector="^:nth-last-child(1) /template/ ContentPresenter">
-      <Setter Property="CornerRadius" Value="0 0 16 16"/>
-    </Style>
-    
     <!--  PointerOver state  -->
     <Style Selector="^:pointerover /template/ ContentPresenter">
       <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />

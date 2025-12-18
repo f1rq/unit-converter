@@ -61,7 +61,8 @@
                                 BorderThickness="0"
                                 BorderBrush="{DynamicResource TransparentBrush}"
                                 Background="{DynamicResource BackgroundBrush}"
-                                CornerRadius="{DynamicResource ControlCornerRadius}">
+                                CornerRadius="{DynamicResource ControlCornerRadius}"
+                                ClipToBounds="True">
                             <ListBox Name="PART_SelectingItemsControl"
                                      BorderThickness="0"
                                      Background="{DynamicResource BackgroundBrush}"

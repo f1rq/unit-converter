@@ -56,7 +56,7 @@
   <Thickness x:Key="ComboBoxPadding">12,5,0,7</Thickness>
   <Thickness x:Key="ComboBoxEditableTextPadding">11,5,32,6</Thickness>
   <x:Double x:Key="ComboBoxMinHeight">32</x:Double>
-
+  
   <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
     <Setter Property="Padding" Value="{DynamicResource ControlPadding}" />
     <Setter Property="FocusAdorner" Value="{x:Null}" />
@@ -170,7 +170,8 @@
                       BorderThickness="0"
                       Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
                       HorizontalAlignment="Stretch"
-                      CornerRadius="{DynamicResource ControlCornerRadius}">
+                      CornerRadius="{DynamicResource ControlCornerRadius}"
+                      ClipToBounds="True">
                 <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                               VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
                               IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">

@@ -52,14 +52,6 @@
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
     </Style>
     
-    <Style Selector="AutoCompleteBox ListBoxItem:nth-child(1) /template/ ContentPresenter">
-        <Setter Property="CornerRadius" Value="16 16 0 0" />
-    </Style>
-    
-    <Style Selector="AutoCompleteBox ListBoxItem:nth-last-child(1) /template/ ContentPresenter">
-        <Setter Property="CornerRadius" Value="0 0 16 16" />
-    </Style>
-    
     <Style Selector="AutoCompleteBox ListBoxItem:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource SecondaryBackgroundBrush}" />
     </Style>
