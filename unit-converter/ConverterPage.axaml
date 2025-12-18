@@ -62,7 +62,7 @@
                         Padding="{DynamicResource ControlPadding}" 
                         CornerRadius="{DynamicResource ControlCornerRadius}"
                         VerticalAlignment="Stretch">
-                        <TextBlock x:Name="ResultValue" Text="0" VerticalAlignment="Center"/>
+                        <SelectableTextBlock x:Name="ResultValue" Text="0" VerticalAlignment="Center"/>
                 </Border>
             
                 <Button x:Name="ResetButton" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" Classes="Danger">Reset</Button>
