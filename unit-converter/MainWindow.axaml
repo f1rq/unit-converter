@@ -6,6 +6,7 @@
         Width="600" Height="380"
         MinWidth="600" MinHeight="380"
         CanResize="False"
+        Icon="Assets/unit-converter.png"
         x:Class="unit_converter.MainWindow"
         FontFamily="{DynamicResource Figtree}"
         Title="Unit Converter">
