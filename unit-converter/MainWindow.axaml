@@ -5,6 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="380"
         Width="600" Height="380"
         MinWidth="600" MinHeight="380"
+        CanResize="False"
         x:Class="unit_converter.MainWindow"
         FontFamily="{DynamicResource Figtree}"
         Title="Unit Converter">
