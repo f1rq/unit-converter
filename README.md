@@ -20,7 +20,6 @@ These builds (arm64 & x64) are currently **untested** as I do not have access to
 
 <hr>
 
-
 **Linux Guide**
 
 To run the **AppImage**, you can use the terminal:
@@ -30,11 +29,18 @@ $ ./UnitConverter_v0.3.0-linux_x64.AppImage
 ```
 Or double-click the file in your file manager (may require `chmod +x` first).
 
-<hr>
-
 **macOS Guide**
 
 Since the app is not signed, you might see a security warning. To open it:
 1. **Right-click** (or Control-click) the app icon.
 2. Choose **Open** from the shortcut menu.
 3. Click **Open** again in the dialog box.
+
+<hr>
+
+## Credits & Tools
+
+- **Developer:**  [f1rq](https://github.com/f1rq)
+- **Font:** [Figtree](https://github.com/erikdkennedy/figtree)
+- **Icons:** [tabler.io](https://tabler.io/icons)
+- **Framework:** [Avalonia UI](https://avaloniaui.net/) and [.NET 9](https://dotnet.microsoft.com/).
