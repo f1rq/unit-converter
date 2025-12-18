@@ -1,15 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <RuntimeIdentifiers>win-x64;linux-x64;osx-x64;osx-arm64</RuntimeIdentifiers>
+
+        <ApplicationIcon Condition="$([MSBuild]::IsOSPlatform('Windows'))">Assets\unit-converter.ico</ApplicationIcon>
         
-        <Version>0.2.0-alpha</Version>
-        <AssemblyVersion>0.2.0.0</AssemblyVersion>
-        <FileVersion>0.2.0.0</FileVersion>
+        <Version>0.3.0</Version>
+        <AssemblyVersion>0.3.0.0</AssemblyVersion>
+        <FileVersion>0.3.0.0</FileVersion>
+        
+        <PublishSingleFile>true</PublishSingleFile>
+        <SelfContained>true</SelfContained>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+        <PublishTrimmed>false</PublishTrimmed>
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,5 +38,16 @@
     <ItemGroup>
       <None Remove="Assets\Fonts\Figtree.ttf" />
       <AvaloniaResource Include="Assets\Fonts\Figtree.ttf" />
+      <None Remove="Assets\unit-converter.png" />
+      <AvaloniaResource Include="Assets\unit-converter.png" />
+      <None Remove="Assets\unit-converter.ico" />
+      <AvaloniaResource Include="Assets\unit-converter.ico" />
+    </ItemGroup>
+    
+    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+        <None Include="Assets\icon.icns">
+            <Link>icon.icns</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 </Project>
