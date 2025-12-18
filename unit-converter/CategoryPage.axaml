@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="380"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="380"
         x:Class="unit_converter.CategoryPage">
         
         <Grid
@@ -17,7 +17,7 @@
                 
                 <TextBlock Grid.Row="0" Text="Unit Converter" FontSize="32" HorizontalAlignment="Center"/>
 
-                <UniformGrid x:Name="CatBtnStackPanel" Grid.Row="1" Margin="20" ColumnSpacing="30" RowSpacing="30" Rows="2" Columns="3" HorizontalAlignment="Center"/>
+                <UniformGrid x:Name="CatBtnStackPanel" Grid.Row="1" Margin="20" ColumnSpacing="30" RowSpacing="30" Rows="2" Columns="4" HorizontalAlignment="Center"/>
         </Grid>
         
         
