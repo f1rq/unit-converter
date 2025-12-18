@@ -18,6 +18,7 @@ public class UnitConverter
             { "Currency", () => CurrencyRates.GetAvailableCurrencies() },
             { "Data", () => DataUnits.Units.Keys },
             { "Time", () => TimeUnits.Factors.Keys },
+            { "Pressure", () => PressureUnits.Factors.Keys }
         };
     
     public IEnumerable<string> GetCategories()
@@ -46,6 +47,7 @@ public class UnitConverter
                 u => u.Value.Factor
             ),
             "Time" => TimeUnits.Factors,
+            "Pressure" => PressureUnits.Factors,
             _ => throw new ArgumentException("Unknown category")
         };
         
