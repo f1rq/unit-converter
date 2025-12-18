@@ -45,3 +45,6 @@ Since the app is not signed, you might see a security warning. To open it:
 - **Font:** [Figtree](https://github.com/erikdkennedy/figtree)
 - **Icons:** [tabler.io](https://tabler.io/icons)
 - **Framework:** [Avalonia UI](https://avaloniaui.net/) and [.NET 9](https://dotnet.microsoft.com/).
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
