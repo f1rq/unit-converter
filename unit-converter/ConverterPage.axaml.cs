@@ -21,6 +21,7 @@ public partial class ConverterPage : UserControl
         _category = "Length";
 
         ConvertButton.Click += OnConvert;
+        FromValue.KeyDown += OnFromValueKeyDown;
         ResetButton.Click += OnReset;
         UnitSwapBtn.Click += SwapUnits;
         BackButton.Click += (_, _) => _mainWindow?.ShowCategoryPage();
@@ -167,6 +168,15 @@ public partial class ConverterPage : UserControl
         }
     }
 
+    private void OnFromValueKeyDown(object? sender, Avalonia.Input.KeyEventArgs e)
+    {
+        if (e.Key == Avalonia.Input.Key.Enter)
+        {
+            OnConvert(sender, new RoutedEventArgs());
+            e.Handled = true;
+        }
+    }
+    
     private void SwapUnits(object? sender, RoutedEventArgs e)
     {
         var fromVal = FromValue.Text;
