@@ -14,6 +14,7 @@ public class UnitConverter
             { "Length", () => LengthUnits.Factors.Keys },
             { "Weight", () => WeightUnits.Factors.Keys },
             { "Area", () => AreaUnits.Factors.Keys },
+            { "Volume", () => VolumeUnits.Factors.Keys },
             { "Currency", () => CurrencyRates.GetAvailableCurrencies() },
             { "Data", () => DataUnits.Units.Keys }
         };
@@ -37,6 +38,7 @@ public class UnitConverter
             "Length" => LengthUnits.Factors,
             "Weight" => WeightUnits.Factors,
             "Area" => AreaUnits.Factors,
+            "Volume" => VolumeUnits.Factors,
             "Currency" => CurrencyRates.Rates,
             "Data" => DataUnits.Units.ToDictionary(
                 u => u.Key,
