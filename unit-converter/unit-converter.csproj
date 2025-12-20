@@ -18,6 +18,9 @@
         <PublishReadyToRun>true</PublishReadyToRun>
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
         <PublishTrimmed>false</PublishTrimmed>
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+        <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
     </PropertyGroup>
 
     <ItemGroup>
