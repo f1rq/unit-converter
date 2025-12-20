@@ -7,12 +7,12 @@
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <RuntimeIdentifiers>win-x64;linux-x64;osx-x64;osx-arm64</RuntimeIdentifiers>
 
-        <ApplicationIcon Condition="$([MSBuild]::IsOSPlatform('Windows'))">Assets\unit-converter.ico</ApplicationIcon>
-        
+        <ApplicationIcon>Assets/unit-converter.ico</ApplicationIcon>
+
         <Version>0.3.1</Version>
         <AssemblyVersion>0.3.1.0</AssemblyVersion>
         <FileVersion>0.3.1.0</FileVersion>
-        
+
         <PublishSingleFile>true</PublishSingleFile>
         <SelfContained>true</SelfContained>
         <PublishReadyToRun>true</PublishReadyToRun>
@@ -32,20 +32,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\Fonts\" />
+        <Folder Include="Assets\Fonts\" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Assets\Fonts\Figtree.ttf" />
-      <AvaloniaResource Include="Assets\Fonts\Figtree.ttf" />
-      <None Remove="Assets\unit-converter.png" />
-      <AvaloniaResource Include="Assets\unit-converter.png" />
-      <None Remove="Assets\unit-converter.ico" />
-      <AvaloniaResource Include="Assets\unit-converter.ico" />
+        <AvaloniaResource Include="Assets/Fonts/Figtree.ttf" />
+        <AvaloniaResource Include="Assets/unit-converter.png" />
+        <AvaloniaResource Include="Assets/unit-converter.ico" />
     </ItemGroup>
-    
-    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
-        <None Include="Assets\icon.icns">
+
+    <ItemGroup Condition="$(RuntimeIdentifier.StartsWith('osx'))">
+        <None Include="Assets/unit-converter.icns">
             <Link>icon.icns</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
