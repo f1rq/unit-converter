@@ -45,8 +45,12 @@ jobs:
         run: |
           wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
           chmod +x appimagetool
-          mkdir -p AppDir/usr/bin
-          cp ./publish/unit-converter AppDir/usr/bin/unit-converter
+          
+          mkdir -p AppDir
+          
+          cp ./publish/unit-converter AppDir/unit-converter
+          chmod +x AppDir/unit-converter
+          
           cp ./unit-converter/Assets/unit-converter.png AppDir/unit-converter.png
           
           echo "[Desktop Entry]" > AppDir/unit-converter.desktop
@@ -56,8 +60,13 @@ jobs:
           echo "Type=Application" >> AppDir/unit-converter.desktop
           echo "Categories=Utility;" >> AppDir/unit-converter.desktop
           
-          cd AppDir && ln -s unit-converter.png .DirIcon && cd ..
-          
+          cd AppDir
+          ln -sf unit-converter.png .DirIcon
+          echo '#!/bin/sh' > AppRun
+          echo 'exec "$APPDIR/unit-converter" "$@"' >> AppRun
+          chmod +x AppRun
+          cd ..
+                    
           ARCH=x86_64 ./appimagetool --appimage-extract-and-run AppDir ${{ matrix.artifact_name }}
         
       - name: Package macOS
