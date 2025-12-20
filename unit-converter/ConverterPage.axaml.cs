@@ -95,6 +95,21 @@ public partial class ConverterPage : UserControl
     {
         UpdateUnits();
     }
+
+    private static string FormatResult(double result)
+    {
+        double absResult = Math.Abs(result);
+
+        if (absResult < 1.0)
+        {
+            return result.ToString("0.########", CultureInfo.InvariantCulture);
+        }
+
+        double rounded = Math.Round(result, 2);
+        return (Math.Abs(rounded - Math.Floor(rounded)) < 0.0001)
+            ? rounded.ToString("0", CultureInfo.InvariantCulture)
+            : rounded.ToString("0.00", CultureInfo.InvariantCulture);
+    }
     
     // Perform conversion
     private void OnConvert(object? sender, RoutedEventArgs e)
@@ -122,11 +137,8 @@ public partial class ConverterPage : UserControl
             }
 
             double result = fromValue * from.Factor / to.Factor;
-            ResultValue.Text =
-                Math.Abs(result) >= 0.01
-                    ? result.ToString("0.00", CultureInfo.InvariantCulture)
-                    : result.ToString("0.########", CultureInfo.InvariantCulture);
-
+            ResultValue.Text = FormatResult(result);
+            
             return;
         }
 
@@ -153,10 +165,7 @@ public partial class ConverterPage : UserControl
         try
         {
             double result = _converter.Convert(_category, fromUnit, toUnit, fromValue);
-            ResultValue.Text =
-                Math.Abs(result) >= 0.01
-                    ? result.ToString("0.00", CultureInfo.InvariantCulture)
-                    : result.ToString("0.########", CultureInfo.InvariantCulture);
+            ResultValue.Text = FormatResult(result);
         }
         catch (KeyNotFoundException)
         {
