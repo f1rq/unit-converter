@@ -20,6 +20,9 @@ jobs:
           - target: osx-arm64
             os: macos-latest
             artifact_name: UnitConverter-macos-arm64.zip
+          - target: osx-x64
+            os: macos-latest
+            artifact_name: UnitConverter-macos-x64.zip
 
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +33,7 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Publish Application
-        run: dotnet publish -c Release -r ${{ matrix.target }} --self-contained true -o ./publish
+        run: dotnet publish ./unit-converter.csproj -c Release -r ${{ matrix.target }} --self-contained true -o ./publish
 
       - name: Package (Windows)
         if: matrix.os == 'windows-latest'
