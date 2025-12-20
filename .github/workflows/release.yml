@@ -47,7 +47,7 @@ jobs:
           chmod +x appimagetool
           mkdir -p AppDir/usr/bin
           cp ./publish/unit-converter AppDir/usr/bin/unit-converter
-          cp ./unit-converter/unit-converter/Assets/unit-converter.png AppDir/unit-converter.png
+          cp ./unit-converter/Assets/unit-converter.png AppDir/unit-converter.png
           
           echo "[Desktop Entry]" > AppDir/unit-converter.desktop
           echo "Name=UnitConverter" >> AppDir/unit-converter.desktop
@@ -56,7 +56,7 @@ jobs:
           echo "Type=Application" >> AppDir/unit-converter.desktop
           echo "Categories=Utility;" >> AppDir/unit-converter.desktop
           
-          ln -s AppDir/unit-converter.png .DirIcon
+          cd AppDir && ln -s unit-converter.png .DirIcon && cd ..
           
           ARCH=x86_64 ./appimagetool AppDir ${{ matrix.artifact_name }}
 
@@ -68,7 +68,7 @@ jobs:
           mkdir -p "$APP_NAME/Contents/Resources"
           
           cp ./publish/unit-converter "$APP_NAME/Contents/MacOS/"
-          cp ./unit-converter/unit-converter/Assets/unit-converter.icns "$APP_NAME/Contents/Resources/icon.icns"
+          cp ./unit-converter/Assets/unit-converter.icns "$APP_NAME/Contents/Resources/icon.icns"
           
           echo '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundleExecutable</key><string>unit-converter</string><key>CFBundleIconFile</key><string>icon.icns</string><key>CFBundleIdentifier</key><string>com.yourname.unitconverter</string><key>CFBundleName</key><string>UnitConverter</string><key>CFBundlePackageType</key><string>APPL</string><key>LSMinimumSystemVersion</key><string>10.13</string></dict></plist>' > "$APP_NAME/Contents/Info.plist"
           
