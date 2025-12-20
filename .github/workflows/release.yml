@@ -1,0 +1,91 @@
+name: Build and Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Build for ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: win-x64
+            os: windows-latest
+            artifact_name: UnitConverter-${{ github.ref_name }}-win-x64.exe
+          - target: linux-x64
+            os: ubuntu-latest
+            artifact_name: UnitConverter-${{ github.ref_name }}-linux-x64.AppImage
+          - target: osx-arm64
+            os: macos-latest
+            artifact_name: UnitConverter-${{ github.ref_name }}-macOS-arm64.zip
+          - target: osx-x64
+            os: macos-latest
+            artifact_name: UnitConverter-${{ github.ref_name }}-macOS-x64.zip
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Publish Application
+        run: dotnet publish ./unit-converter/unit-converter.csproj -c Release -r ${{ matrix.target }} --self-contained true -o ./publish
+
+      - name: Package Windows (.exe)
+        if: matrix.target == 'win-x64'
+        run: mv ./publish/unit-converter.exe ./${{ matrix.artifact_name }}
+
+      - name: Package Linux (AppImage)
+        if: matrix.target == 'linux-x64'
+        run: |
+          wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
+          chmod +x appimagetool
+          
+          mkdir -p AppDir
+          
+          cp ./publish/unit-converter AppDir/unit-converter
+          chmod +x AppDir/unit-converter
+          
+          cp ./unit-converter/Assets/unit-converter.png AppDir/unit-converter.png
+          
+          echo "[Desktop Entry]" > AppDir/unit-converter.desktop
+          echo "Name=UnitConverter" >> AppDir/unit-converter.desktop
+          echo "Exec=unit-converter" >> AppDir/unit-converter.desktop
+          echo "Icon=unit-converter" >> AppDir/unit-converter.desktop
+          echo "Type=Application" >> AppDir/unit-converter.desktop
+          echo "Categories=Utility;" >> AppDir/unit-converter.desktop
+          
+          cd AppDir
+          ln -sf unit-converter.png .DirIcon
+          echo '#!/bin/sh' > AppRun
+          echo 'exec "$APPDIR/unit-converter" "$@"' >> AppRun
+          chmod +x AppRun
+          cd ..
+                    
+          ARCH=x86_64 ./appimagetool --appimage-extract-and-run AppDir ${{ matrix.artifact_name }}
+        
+      - name: Package macOS
+        if: startsWith(matrix.target, 'osx')
+        run: |
+          APP_NAME="UnitConverter-${{ matrix.target }}.app"
+          mkdir -p "$APP_NAME/Contents/MacOS"
+          mkdir -p "$APP_NAME/Contents/Resources"
+          
+          cp ./publish/unit-converter "$APP_NAME/Contents/MacOS/"
+          cp ./unit-converter/Assets/unit-converter.icns "$APP_NAME/Contents/Resources/icon.icns"
+          
+          echo '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundleExecutable</key><string>unit-converter</string><key>CFBundleIconFile</key><string>icon.icns</string><key>CFBundleIdentifier</key><string>com.yourname.unitconverter</string><key>CFBundleName</key><string>UnitConverter</string><key>CFBundlePackageType</key><string>APPL</string><key>LSMinimumSystemVersion</key><string>10.13</string></dict></plist>' > "$APP_NAME/Contents/Info.plist"
+          
+          zip -r ./${{ matrix.artifact_name }} "$APP_NAME"
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ matrix.artifact_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
