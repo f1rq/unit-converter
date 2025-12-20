@@ -58,8 +58,8 @@ jobs:
           
           cd AppDir && ln -s unit-converter.png .DirIcon && cd ..
           
-          ARCH=x86_64 ./appimagetool AppDir ${{ matrix.artifact_name }}
-
+          ARCH=x86_64 ./appimagetool --appimage-extract-and-run AppDir ${{ matrix.artifact_name }}
+        
       - name: Package macOS
         if: startsWith(matrix.target, 'osx')
         run: |
